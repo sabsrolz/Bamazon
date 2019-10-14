@@ -27,6 +27,8 @@ VALUES
 ("Mixing Bowl Set", "Home & Kitchen", 19.99, 3), 
 ("Decorative Multicolored Pillow", "Home Bedding", 29.92, 6);
 
+SELECT stock_quantity FROM products WHERE item_id = 2;
+
 
 
 

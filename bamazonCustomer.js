@@ -23,13 +23,15 @@ connection.connect(function(err) {
 });
 
 function clientPurchase() {
+  let updateQuery;
+  let purchaseCost;
   const availableItems = {};
   const productsQuery = `SELECT item_id, product_name, price FROM products`;
   connection.query(productsQuery, function(err, data) {
     if (err) throw err;
     console.table(data);
     data.forEach(product => itemIds.push(product.item_id));
-    console.log(itemIds);
+    //console.log(itemIds);
     inquirer
       .prompt([
         {
@@ -39,12 +41,43 @@ function clientPurchase() {
           choices: itemIds
         }
       ])
-      .then(selection => {
-        console.log(selection);
+      .then(itemSelection => {
+        inquirer
+          .prompt([
+            {
+              type: "number",
+              message: "How many units do you want to purchase?",
+              name: "units"
+            }
+          ])
+          .then(unitsSelection => {
+            //console.log(itemSelection.availableItems);
+            connection.query(
+              `SELECT item_id,stock_quantity,price FROM products WHERE item_id = ${itemSelection.availableItems};`,
+              function(err, data) {
+                if (err) throw err;
+                if (unitsSelection.units < data[0].stock_quantity) {
+                  purchaseCost = data[0].price * unitsSelection.units;
+                  console.log(`Your total is $${purchaseCost}`);
+                  updateQuery = `UPDATE products SET stock_quantity = ${data[0]
+                    .stock_quantity - unitsSelection.units} WHERE item_id = ${
+                    data[0].item_id
+                  };`;
+                  connection.query(updateQuery, function(err, data) {
+                    if (err) throw err;
+                    //console.log(data);
+                  });
+                } else {
+                  console.log("Insufficient quantity!");
+                }
+                connection.end();
+              }
+            );
+          });
       });
   });
 
-  connection.end();
+  //connection.end();
 }
 
 clientPurchase();
