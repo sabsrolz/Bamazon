@@ -36,10 +36,10 @@ function supervisorInquirer() {
     ])
     .then(selection => {
       if (selection.option === "View Product Sales by Department") {
-        queryRequest = `SELECT department_id, departments.department_name, SUM(over_head_costs) AS total_over_head_costs, SUM(products.product_sales) AS total_product_sales, (products.product_sales - over_head_costs) AS total_profit
-          FROM departments 
-          INNER JOIN products ON departments.department_name = products.department_name
-          GROUP BY department_id;`;
+        queryRequest = `SELECT department_id, departments.department_name, over_head_costs, SUM(products.product_sales) AS total_product_sales, ((SUM(products.product_sales)) - over_head_costs) AS total_profit
+        FROM products 
+        RIGHT JOIN departments ON products.department_name= departments.department_name
+        GROUP BY department_id;`;
         supervisorQuery(queryRequest);
       } else {
         inquirer

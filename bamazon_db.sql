@@ -39,22 +39,28 @@ PRIMARY KEY (department_id)
 ALTER TABLE products
 ADD COLUMN product_sales FLOAT(10) NOT NULL AFTER stock_quantity;
 
-ALTER TABLE products MODIFY product_sales FLOAT (10) DEFAULT 0;
+ALTER TABLE products MODIFY product_sales FLOAT (2) DEFAULT 0;
 
 SELECT * FROM departments;
 
 ALTER TABLE departments
-ADD COLUMN product_sales FLOAT(10) NOT NULL AFTER over_head_costs;
+ADD COLUMN product_sales FLOAT(2) NOT NULL AFTER over_head_costs;
 
 ALTER TABLE departments
 ADD COLUMN total_profit FLOAT(10) NOT NULL AFTER product_sales;
 
-ALTER TABLE departments MODIFY product_sales FLOAT (10) DEFAULT 0;
-ALTER TABLE departments MODIFY total_profit FLOAT (10) DEFAULT 0;
+ALTER TABLE departments MODIFY product_sales FLOAT (2) DEFAULT 0;
+ALTER TABLE departments MODIFY total_profit FLOAT (2) DEFAULT 0;
+ALTER TABLE departments DROP total_profit;
 
-SELECT department_id, departments.department_name, SUM(over_head_costs), SUM(products.product_sales), (products.product_sales - over_head_costs) AS total_profit
+SELECT department_id, departments.department_name, over_head_costs, SUM(products.product_sales) AS total_product_sales, ((SUM(products.product_sales)) - over_head_costs) AS total_profit
 FROM departments 
 INNER JOIN products ON departments.department_name = products.department_name
+GROUP BY department_id;
+
+SELECT department_id, departments.department_name, over_head_costs, SUM(products.product_sales) AS total_product_sales, ((SUM(products.product_sales)) - over_head_costs) AS total_profit
+FROM products 
+RIGHT JOIN departments ON products.department_name= departments.department_name
 GROUP BY department_id;
 
 SELECT * FROM products;
@@ -77,3 +83,5 @@ VALUES
 ("Health & Personal Care", 300);
 
 SELECT * FROM departments;
+
+SELECT * FROM products;

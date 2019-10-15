@@ -75,9 +75,10 @@ function managerInquirer() {
                   function(err, data) {
                     querySelected = `UPDATE products SET stock_quantity = ${data[0]
                       .stock_quantity +
-                      stockSelection.quantity} WHERE product_name = ${
+                      stockSelection.quantity} WHERE product_name = "${
                       stockSelection.addProduct
-                    };`;
+                    }";`;
+                    //console.log(querySelected);
                     managerQuery(querySelected);
                   }
                 );
