@@ -29,6 +29,12 @@ VALUES
 
 SELECT stock_quantity FROM products WHERE item_id = 2;
 
+CREATE TABLE departments (
+department_id INTEGER NOT NULL AUTO_INCREMENT, 
+department_name VARCHAR(100) NOT NULL, 
+over_head_costs FLOAT(10) NOT NULL, 
+PRIMARY KEY (department_id)
+);
 
-
-
+ALTER TABLE products
+ADD COLUMN product_sales FLOAT(10) NOT NULL AFTER stock_quantity;

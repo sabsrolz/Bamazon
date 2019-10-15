@@ -67,6 +67,13 @@ function clientPurchase() {
                     if (err) throw err;
                     //console.log(data);
                   });
+                  connection.query(
+                    `UPDATE products SET product_sales = ${purchaseCost} WHERE item_id = ${data[0].item_id};`,
+                    function(err, data) {
+                      if (err) throw err;
+                      console.log(data);
+                    }
+                  );
                 } else {
                   console.log("Insufficient quantity!");
                 }
