@@ -38,3 +38,42 @@ PRIMARY KEY (department_id)
 
 ALTER TABLE products
 ADD COLUMN product_sales FLOAT(10) NOT NULL AFTER stock_quantity;
+
+ALTER TABLE products MODIFY product_sales FLOAT (10) DEFAULT 0;
+
+SELECT * FROM departments;
+
+ALTER TABLE departments
+ADD COLUMN product_sales FLOAT(10) NOT NULL AFTER over_head_costs;
+
+ALTER TABLE departments
+ADD COLUMN total_profit FLOAT(10) NOT NULL AFTER product_sales;
+
+ALTER TABLE departments MODIFY product_sales FLOAT (10) DEFAULT 0;
+ALTER TABLE departments MODIFY total_profit FLOAT (10) DEFAULT 0;
+
+SELECT department_id, departments.department_name, SUM(over_head_costs), SUM(products.product_sales), (products.product_sales - over_head_costs) AS total_profit
+FROM departments 
+INNER JOIN products ON departments.department_name = products.department_name
+GROUP BY department_id;
+
+SELECT * FROM products;
+
+INSERT INTO products (product_name, department_name, price, stock_quantity) 
+VALUES 
+("Charging Station", "Devices", 36.99, 14), 
+("Women's Print Sweater", "Fashion", 22.99, 10), 
+("Quilt Bedding Set", "Home Bedding", 27.99, 20),
+("Premium Loft Pillow", "Home Bedding", 64.99, 12), 
+("Food Storage Containers", "Home & Kitchen", 27.99, 9), 
+("Clay Face Mask", "Health & Personal Care", 45.40, 5);
+
+INSERT INTO departments (department_name, over_head_costs)
+VALUES 
+("Devices", 500), 
+("Fashion", 150), 
+("Home Bedding", 300),
+("Home & Kitchen", 100), 
+("Health & Personal Care", 300);
+
+SELECT * FROM departments;
