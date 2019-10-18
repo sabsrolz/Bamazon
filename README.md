@@ -14,12 +14,17 @@ Enough availability and successful transaction:
 ![Enough availability and successful transaction](/demo/customer_no_stock.PNG)
 
 Demo for Manager:
-
+Manager has option of viewing data for all available products:
 ![Manager has option of viewing data for all available products](/demo/manager_products.PNG)
+Manager has option to view items that currently have a low stock (< 5 items available):
 ![Manager has option to view items that currently have a low stock (< 5 items available)](/demo/manager_low_stock.PNG)
+Manager can add inventory to existing products:
 ![Manager can add inventory to existing products](/demo/manager_add_low2.PNG)
+Manager can add a new product entry to products database:
 ![Manager can add a new product entry to products database](/demo/manager_add_product.PNG)
 
 Demo for Supervisor:
+Supervisor has option of viewing store data per department (including aggregated sales data):
 ![Supervisor has option of viewing store data per department (including aggregated sales data)](/demo/supervisor_departments.PNG)
+Supervisor can add a new department to database:
 ![Supervisor can add a new department to database](/demo/supervisor_add.PNG)
