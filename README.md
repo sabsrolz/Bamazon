@@ -4,7 +4,7 @@ Bamazon is a Command Line Interface application that takes input from customers,
 
 The app uses npm mysql, inquirer and table packages.
 
-Demo for customer:
+Demo for customer: **bold text**
 
 Customer has option to purchase item per item id:
 ![Customer has option to purchase item per item id](/demo/customer_purchase.PNG)
