@@ -4,7 +4,10 @@ Bamazon is a Command Line Interface application that takes input from customers,
 
 The app uses npm mysql, inquirer and table packages.
 
+DEMO of CLI app: The following screenshots display the different functionalities available for customers, managers, and supervisors.
+
 **Demo for customer:**
+
 Customer has option to purchase item per item id:
 ![Customer has option to purchase item per item id](/demo/customer_purchase.PNG)
 Not enough stock for customer's selected quantity:
@@ -13,6 +16,7 @@ Enough availability and successful transaction:
 ![Enough availability and successful transaction](/demo/customer_no_stock.PNG)
 
 **Demo for Manager:**
+
 Manager has option of viewing data for all available products:
 ![Manager has option of viewing data for all available products](/demo/manager_products.PNG)
 Manager has option to view items that currently have a low stock (< 5 items available):
@@ -23,6 +27,7 @@ Manager can add a new product entry to products database:
 ![Manager can add a new product entry to products database](/demo/manager_add_product.PNG)
 
 **Demo for Supervisor:**
+
 Supervisor has option of viewing store data per department (including aggregated sales data):
 ![Supervisor has option of viewing store data per department (including aggregated sales data)](/demo/supervisor_departments.PNG)
 Supervisor can add a new department to database:
