@@ -19,8 +19,6 @@ ALTER TABLE products MODIFY price FLOAT;
 INSERT INTO products (product_name, department_name, price, stock_quantity) 
 VALUES ("Echo Studio Speakers", "Devices", "199.99", 5);
 
-SELECT * FROM products;
-
 INSERT INTO products (product_name, department_name, price, stock_quantity) 
 VALUES 
 ("Kid's Bubble Umbrella", "Fashion", 14.49, 8), 

@@ -112,7 +112,7 @@ function managerInquirer() {
           .then(answers => {
             //console.log(typeof answers.newPrice);
             querySelected = `INSERT INTO products (product_name, department_name, price, stock_quantity) VALUES ("${answers.newProduct}", "${answers.newDepartment}", ${answers.newPrice}, ${answers.newStock});`;
-            console.log(querySelected);
+            //console.log(querySelected);
 
             managerQuery(querySelected);
           });

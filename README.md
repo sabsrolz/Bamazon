@@ -10,9 +10,9 @@ DEMO of CLI app: The following screenshots display the different functionalities
 
 Customer has option to purchase item per item id:
 ![Customer has option to purchase item per item id](/demo/customer_purchase.PNG)
-Not enough stock for customer's selected quantity:
-![Not enough stock for customer's selected quantity](/demo/customer_stock.PNG)
 Enough availability and successful transaction:
+![Not enough stock for customer's selected quantity](/demo/customer_stock.PNG)
+Not enough stock for customer's selected quantity:
 ![Enough availability and successful transaction](/demo/customer_no_stock.PNG)
 
 **Demo for Manager:**
